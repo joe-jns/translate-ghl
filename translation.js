@@ -1,61 +1,54 @@
-// Bibliothèque de traduction
-const translationDictionary = {
-    "Invoices": "Factures",
-    "Join a Group": "Rejoindre un groupe",
-    "Take a course": "Suivre un cours",
-    "Check Affiliate Earnings": "Vérifier les gains d'affiliation",
-    "Manage Subscriptions": "Gérer les abonnements"
-};
-  
-  // Fonction pour remplacer les mots dans une chaîne de texte
-  function translateText(text) {
-    let translatedText = text;
-    for (const [original, translated] of Object.entries(translationDictionary)) {
-      const regex = new RegExp(`\\b${original}\\b`, "gi"); // Recherche du mot entier (insensible à la casse)
-      translatedText = translatedText.replace(regex, translated);
-    }
-    return translatedText;
+// Charger le fichier JSON des traductions
+async function loadTranslations() {
+  const response = await fetch("translations.json");
+  const translations = await response.json();
+  return translations;
+}
+
+// Fonction pour remplacer les textes sur la page
+function translateText(text, dictionary) {
+  let translatedText = text;
+  for (const [original, translated] of Object.entries(dictionary)) {
+    const regex = new RegExp(`\\b${original}\\b`, "gi"); // Recherche mot entier insensible à la casse
+    translatedText = translatedText.replace(regex, translated);
   }
-  
-  // Fonction pour parcourir et modifier les nœuds texte
-  function translateNode(node) {
-    if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
-      const newText = translateText(node.textContent);
-      if (newText !== node.textContent) {
-        node.textContent = newText;
-      }
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      for (const child of node.childNodes) {
-        translateNode(child);
-      }
+  return translatedText;
+}
+
+// Fonction pour parcourir et modifier les nœuds texte
+function translateNode(node, dictionary) {
+  if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+    const newText = translateText(node.textContent, dictionary);
+    if (newText !== node.textContent) {
+      node.textContent = newText;
+    }
+  } else if (node.nodeType === Node.ELEMENT_NODE) {
+    for (const child of node.childNodes) {
+      translateNode(child, dictionary);
     }
   }
-  
-  // Observer les changements en direct sur la page sans surcharge excessive
-  const observer = new MutationObserver((mutations) => {
-    requestIdleCallback(() => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === "childList") {
-          mutation.addedNodes.forEach((node) => translateNode(node));
-        } else if (mutation.type === "characterData") {
-          mutation.target.textContent = translateText(
-            mutation.target.textContent
-          );
-        }
-      });
+}
+
+// Observer les changements en direct sur la page
+const observer = new MutationObserver((mutations, observer) => {
+  requestIdleCallback(() => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === "childList") {
+        mutation.addedNodes.forEach((node) => translateNode(node, window.translationDictionary));
+      } else if (mutation.type === "characterData") {
+        mutation.target.textContent = translateText(mutation.target.textContent, window.translationDictionary);
+      }
     });
   });
-  
-  // Options pour l'observateur
-  const observerConfig = {
-    childList: true,
-    subtree: true,
-    characterData: true,
-  };
-  
-  // Démarrer l'observation du body sans bloquer la page
+});
+
+// Charger les traductions et observer les changements sur la page
+loadTranslations().then((translations) => {
+  window.translationDictionary = translations;
+  translateNode(document.body, translations);
+
+  // Démarrer l'observation du body
   requestIdleCallback(() => {
-    observer.observe(document.body, observerConfig);
-    translateNode(document.body); // Traduire le contenu initial
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
   });
-  
+});
