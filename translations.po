@@ -8,4 +8,4 @@ msgid "Check Affiliate Earnings"
 msgstr "Vérifier les gains d'affiliation"
 
 msgid "Manage Subscriptions"
-msgstr "Gérer les abonnements"
+msgstr "Gérer la abonnements"
