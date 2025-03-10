@@ -9,3 +9,6 @@ msgstr "Vérifier les gains d'affiliation"
 
 msgid "Manage Subscriptions"
 msgstr "Gérer la abonnements"
+
+msgid "Welcome to "
+msgstr "Bienvenue sur "
