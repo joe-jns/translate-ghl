@@ -54,7 +54,7 @@ const observer = new MutationObserver(mutations => {
 
 // Charger les traductions et appliquer les changements
 (async function () {
-    const poUrl = "https://raw.githubusercontent.com/user/repo/main/translations.po"; // Remplace par ton URL
+    const poUrl = "https://raw.githubusercontent.com/joe-jns/translate-ghl/main/translations.po"; // Remplace par ton URL
     window.translationDict = await loadTranslations(poUrl);
     translateNode(document.body, window.translationDict);
     observer.observe(document.body, { childList: true, subtree: true, characterData: true });
