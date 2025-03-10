@@ -1,34 +1,16 @@
-// Charger les traductions depuis le fichier .po
-async function loadTranslations(url) {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`Erreur HTTP : ${response.status}`);
-      const poContent = await response.text();
-      return parsePO(poContent);
-    } catch (error) {
-      console.error("❌ Erreur lors du chargement du fichier .po :", error);
-      return {};
-    }
-  }
-  
-  // Parser le `.po` et générer la bibliothèque de traduction
-  function parsePO(content) {
-    const translationDict = {};
-    const regex = /msgid\s+"(.*)"\s+msgstr\s+"(.*)"/g;
-    let match;
-  
-    while ((match = regex.exec(content)) !== null) {
-      translationDict[match[1].trim()] = match[2].trim();
-    }
-  
-    console.log("📖 Dictionnaire chargé :", translationDict);
-    return translationDict;
-  }
+// Bibliothèque de traduction
+const translationDictionary = {
+    "Invoices": "Factures",
+    "Join a Group": "Rejoindre un groupe",
+    "Take a course": "Suivre un cours",
+    "Check Affiliate Earnings": "Vérifier les gains d'affiliation",
+    "Manage Subscriptions": "Gérer les abonnements"
+};
   
   // Fonction pour remplacer les mots dans une chaîne de texte
   function translateText(text) {
     let translatedText = text;
-    for (const [original, translated] of Object.entries(window.translationDictionary)) {
+    for (const [original, translated] of Object.entries(translationDictionary)) {
       const regex = new RegExp(`\\b${original}\\b`, "gi"); // Recherche du mot entier (insensible à la casse)
       translatedText = translatedText.replace(regex, translated);
     }
@@ -56,26 +38,24 @@ async function loadTranslations(url) {
         if (mutation.type === "childList") {
           mutation.addedNodes.forEach((node) => translateNode(node));
         } else if (mutation.type === "characterData") {
-          mutation.target.textContent = translateText(mutation.target.textContent);
+          mutation.target.textContent = translateText(
+            mutation.target.textContent
+          );
         }
       });
     });
   });
   
-  // Charger et appliquer la traduction
-  (async function () {
-    const poUrl = "https://raw.githubusercontent.com/joe-jns/translate-ghl/main/translations.po"; // Remplace par ton URL
-    window.translationDictionary = await loadTranslations(poUrl);
+  // Options pour l'observateur
+  const observerConfig = {
+    childList: true,
+    subtree: true,
+    characterData: true,
+  };
   
-    if (Object.keys(window.translationDictionary).length === 0) {
-      console.error("⚠️ Dictionnaire vide ! Vérifie le fichier .po !");
-      return;
-    }
-  
-    requestIdleCallback(() => {
-      observer.observe(document.body, { childList: true, subtree: true, characterData: true });
-      translateNode(document.body); // Traduire le contenu initial
-      console.log("✅ Traduction activée avec succès !");
-    });
-  })();
+  // Démarrer l'observation du body sans bloquer la page
+  requestIdleCallback(() => {
+    observer.observe(document.body, observerConfig);
+    translateNode(document.body); // Traduire le contenu initial
+  });
   
