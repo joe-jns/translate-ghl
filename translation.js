@@ -1,5 +1,8 @@
 // Bibliothèque de traduction
 const translationDictionary = {
+  "Welcome to ": "Bienvenue dans ",
+  "View all Groups": "Voir tous les groupes",
+  "You don’t have any!": "Vous n’en avez pas !",
   "Invoices": "Factures",
   "Join a Group": "Rejoindre un groupe",
   "Take a course": "Suivre un cours",
