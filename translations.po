@@ -1,0 +1,11 @@
+msgid "Join a Group"
+msgstr "Rejoindre un groupe"
+
+msgid "Take a course"
+msgstr "Suivre un cours"
+
+msgid "Check Affiliate Earnings"
+msgstr "Vérifier les gains d'affiliation"
+
+msgid "Manage Subscriptions"
+msgstr "Gérer les abonnements"
