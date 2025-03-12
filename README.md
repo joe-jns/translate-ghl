@@ -93,4 +93,3 @@ Ce projet est sous **licence MIT**. Vous êtes libre de l'utiliser, le modifier 
 🔹 [Rapporter un bug](https://github.com/joe-jns/translate-ghl/issues)  
 
 🔥 **Merci d'utiliser Translate GHL !** 😃
-```
