@@ -1,7 +1,3 @@
-Voici un **README.md** bien structuré avec une mise en page claire et optimisée pour GitHub :
-
----
-
 ```md
 # 🏆 Translate GHL
 
