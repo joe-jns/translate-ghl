@@ -24,7 +24,7 @@ Ajoutez le script suivant dans votre page pour charger la traduction dynamiqueme
 <script>
   (function() {
       let script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/gh/joe-jns/translate-ghl@main/translate-ghl.js"; 
+      script.src = "https://cdn.jsdelivr.net/gh/joe-jns/translate-ghl@main/translation.js"; 
       script.type = "text/javascript";
       script.async = true;
       document.head.appendChild(script);
