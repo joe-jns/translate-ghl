@@ -1,4 +1,3 @@
-```md
 # 🏆 Translate GHL
 
 > **Un script JavaScript pour traduire dynamiquement l'interface de Go High Level (GHL) en français.**  
