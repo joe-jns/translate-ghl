@@ -39,7 +39,7 @@ const translationDictionary = {
   "Switch to other groups": "Passer à d'autres groupes",
   "Switch to dark mode": "Passer en mode sombre",
   "Communities": "Communautés",
-  "Courses": "Cours",
+  "Courses": "Formations",
   "Affiliates": "Affiliation",
   "Unread": "Non lu",
   "Welcome to Your request to join the group has been approved.":
@@ -75,6 +75,26 @@ const translationDictionary = {
   "SETTINGS": "Paramètres",
   "Public Group": "Groupe public",
   "ago in ": " dans ",
+  "No notifications yet": "Aucune notification pour le moment",
+  "When you get notifications, they’ll show up here": "Lorsque vous recevrez des notifications, elles s'afficheront ici",
+  "Title A-Z": "Titre A-Z",
+  "Title Z-A": "Titre Z-A",
+  "Library Order (Low to High)": "Ordre de la bibliothèque (du plus bas au plus haut)",
+  "Library Order (High to Low)": "Ordre de la bibliothèque (du plus haut au plus bas)",
+  "Most Lessons": "Le plus de leçons",
+  "Least Lessons": "Le moins de leçons",
+  "Most Complete": "Le plus complet",
+  "Least Complete": "Le moins complet",
+  "Recently Enrolled": "Inscrit récemment",
+  "Oldest Enrolled": "Le plus ancien inscrit",
+  "Recently Accessed": "Accédé récemment",
+  "Oldest Accessed": "Accédé le plus anciennement",
+  "categories and lessons": "Catégories et leçons",
+  "Manage Your Account": "Gérer votre compte",
+  "Log out": "Se déconnecter",
+  "All": "Tout les",
+  "My": "Mes"
+
 };
 
 function escapeRegExp(string) {
