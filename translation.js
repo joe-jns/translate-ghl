@@ -1,101 +1,23 @@
 // Bibliothèque de traduction
-const translationDictionary = {
-  "Welcome to ": "Bienvenue dans ",
-  "View all Groups": "Voir tous les groupes",
-  "You don’t have any": "Vous n’en avez pas",
-  "Invoices": "Factures",
-  "Join a Group": "Rejoindre un groupe",
-  "Take a course": "Suivre un cours",
-  "Check Affiliate Earnings": "Vérifier les gains d'affiliation",
-  "Manage Subscriptions": "Gérer les abonnements",
-  "Recently opened": "Ouvert récemment",
-  "Contracts": "Contrats",
-  "Hi": "Salut",
+let translationDictionary = {};
 
-  // Groupe
-  "What's on your mind": "À quoi penses-tu",
-  "Learning": "Apprentissage",
-  "Members": "Membres",
-  "Events": "Événements",
-  "Leaderboard": "Classement",
-  "About": "À propos",
-  "Home": "Accueil",
-  "Annoucements": "Annonces",
-  "Search": "Rechercher",
-  "Private Group": "Groupe privé",
-  "Posts": "Publications",
-  "Admin": "Admin",
-  "Invite Members": "Inviter des membres",
-  "30-days": "30 jours",
-  "All time": "Depuis toujours",
-  "7-days": "7 jours",
-  "No activity to show": "Aucune activité à afficher",
-  "See all leaderboards": "Voir tous les classements",
-  "Posting in": "Publication dans",
-  "What is your title?": "Quel est ton titre ?",
-  "Cancel": "Annuler",
-  "Publish Post": "Publier la publication",
-  "Search Member": "Rechercher un membre",
-  "Switch to other groups": "Passer à d'autres groupes",
-  "Switch to dark mode": "Passer en mode sombre",
-  "Communities": "Communautés",
-  "Courses": "Formations",
-  "Affiliates": "Affiliation",
-  "Unread": "Non lu",
-  "Welcome to Your request to join the group has been approved.":
-    "Bienvenue, votre demande pour rejoindre le groupe a été approuvée.",
-  "No conversations found": "Aucune conversation trouvée",
-  "Looks like you haven't chatted with anyone yet. Search a contact and take the first step":
-    "On dirait que tu n'as encore discuté avec personne. Recherchez un contact et fais le premier pas !",
-  "Start Chatting": "Commencer à discuter",
-  "Level 1": "Niveau 1",
-  "Level 2": "Niveau 2",
-  "Level 3": "Niveau 3",
-  "Level 4": "Niveau 4",
-  "Level 5": "Niveau 5",
-  "Level 6": "Niveau 6",
-  "Level 7": "Niveau 7",
-  "Level 8": "Niveau 8",
-  "Level 9": "Niveau 9",
-  "of": "de",
-  "points to level up": "points pour monter de niveau",
-  "Free": "Gratuit",
-  "Contributors": "Contributeurs",
-  "Active hours ago": "Actif il y a heures",
-  "Joined": "A rejoint",
-  "No Publications found": "Aucune publication trouvée",
-  "Open": "Ouvrir",
-  "Add Gif": "Ajouter un Gif",
-  "Add Image": "Ajouter une image",
-  "Add video": "Ajouter une vidéo",
-  "Add link": "Ajouter un lien",
-  "Add Attachment": "Ajouter une pièce jointe",
-  "Add Emoji": "Ajouter un emoji",
-  "Add Channel": "Ajouter un canal",
-  "SETTINGS": "Paramètres",
-  "Public Group": "Groupe public",
-  "ago in ": " dans ",
-  "No notifications yet": "Aucune notification pour le moment",
-  "When you get notifications, they’ll show up here": "Lorsque vous recevrez des notifications, elles s'afficheront ici",
-  "Title A-Z": "Titre A-Z",
-  "Title Z-A": "Titre Z-A",
-  "Library Order (Low to High)": "Ordre de la bibliothèque (du plus bas au plus haut)",
-  "Library Order (High to Low)": "Ordre de la bibliothèque (du plus haut au plus bas)",
-  "Most Lessons": "Le plus de leçons",
-  "Least Lessons": "Le moins de leçons",
-  "Most Complete": "Le plus complet",
-  "Least Complete": "Le moins complet",
-  "Recently Enrolled": "Inscrit récemment",
-  "Oldest Enrolled": "Le plus ancien inscrit",
-  "Recently Accessed": "Accédé récemment",
-  "Oldest Accessed": "Accédé le plus anciennement",
-  "categories and lessons": "Catégories et leçons",
-  "Manage Your Account": "Gérer votre compte",
-  "Log out": "Se déconnecter",
-  "All": "Tout les",
-  "My": "Mes"
-
-};
+// Fonction pour charger le dictionnaire de traduction depuis un fichier JSON
+async function loadTranslations() {
+  try {
+    const response = await fetch('translations.json');
+    if (!response.ok) {
+      throw new Error(`Erreur HTTP: ${response.status}`);
+    }
+    translationDictionary = await response.json();
+    console.log('Traductions chargées avec succès');
+    
+    // Une fois les traductions chargées, commencer la traduction de la page
+    translateNode(document.body);
+    startObserver();
+  } catch (error) {
+    console.error('Erreur lors du chargement des traductions:', error);
+  }
+}
 
 function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // Échappe les caractères spéciaux
@@ -103,6 +25,8 @@ function escapeRegExp(string) {
 
 // Fonction pour remplacer les mots dans une chaîne de texte
 function translateText(text) {
+  if (!text || typeof text !== 'string') return text;
+  
   let translatedText = text;
   for (const [original, translated] of Object.entries(translationDictionary)) {
     const safeOriginal = escapeRegExp(original); // Échapper les caractères spéciaux
@@ -114,12 +38,33 @@ function translateText(text) {
 
 // Fonction pour parcourir et modifier les nœuds texte
 function translateNode(node) {
-  if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+  if (!node) return;
+  
+  if (node.nodeType === Node.TEXT_NODE && node.textContent && node.textContent.trim().length > 0) {
     const newText = translateText(node.textContent);
     if (newText !== node.textContent) {
       node.textContent = newText;
     }
   } else if (node.nodeType === Node.ELEMENT_NODE) {
+    // Ignorer les scripts, styles, inputs, et textareas
+    const nodeName = node.nodeName.toLowerCase();
+    if (nodeName === 'script' || nodeName === 'style' || 
+        nodeName === 'input' || nodeName === 'textarea') {
+      return;
+    }
+    
+    // Traduire les attributs spécifiques (placeholder, title, alt)
+    if (node.hasAttribute('placeholder')) {
+      node.setAttribute('placeholder', translateText(node.getAttribute('placeholder')));
+    }
+    if (node.hasAttribute('title')) {
+      node.setAttribute('title', translateText(node.getAttribute('title')));
+    }
+    if (node.hasAttribute('alt')) {
+      node.setAttribute('alt', translateText(node.getAttribute('alt')));
+    }
+    
+    // Parcourir les enfants
     for (const child of node.childNodes) {
       translateNode(child);
     }
@@ -127,29 +72,41 @@ function translateNode(node) {
 }
 
 // Observer les changements en direct sur la page sans surcharge excessive
-const observer = new MutationObserver((mutations) => {
-  requestIdleCallback(() => {
-    mutations.forEach((mutation) => {
-      if (mutation.type === "childList") {
-        mutation.addedNodes.forEach((node) => translateNode(node));
-      } else if (mutation.type === "characterData") {
-        mutation.target.textContent = translateText(
-          mutation.target.textContent
-        );
-      }
+function startObserver() {
+  const observer = new MutationObserver((mutations) => {
+    requestIdleCallback(() => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "childList") {
+          mutation.addedNodes.forEach((node) => translateNode(node));
+        } else if (mutation.type === "characterData") {
+          if (mutation.target.parentNode) {
+            const newText = translateText(mutation.target.textContent);
+            if (newText !== mutation.target.textContent) {
+              mutation.target.textContent = newText;
+            }
+          }
+        }
+      });
     });
   });
-});
 
-// Options pour l'observateur
-const observerConfig = {
-  childList: true,
-  subtree: true,
-  characterData: true,
-};
+  // Options pour l'observateur
+  const observerConfig = {
+    childList: true,
+    subtree: true,
+    characterData: true,
+  };
 
-// Démarrer l'observation du body sans bloquer la page
-requestIdleCallback(() => {
+  // Démarrer l'observation du body
   observer.observe(document.body, observerConfig);
-  translateNode(document.body); // Traduire le contenu initial
+}
+
+// Charger les traductions au démarrage
+document.addEventListener('DOMContentLoaded', () => {
+  loadTranslations();
 });
+
+// Si le DOM est déjà chargé
+if (document.readyState === 'interactive' || document.readyState === 'complete') {
+  loadTranslations();
+}
