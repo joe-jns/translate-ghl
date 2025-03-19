@@ -4,7 +4,10 @@ let translationDictionary = {};
 // Fonction pour charger le dictionnaire de traduction depuis un fichier JSON
 async function loadTranslations() {
   try {
-    const response = await fetch('translations.json');
+    // Utiliser l'URL fournie par le script d'intégration ou une URL par défaut
+    const jsonUrl = window.translationsJsonUrl || 'https://cdn.jsdelivr.net/gh/joe-jns/translate-ghl@main/translations.json';
+    
+    const response = await fetch(jsonUrl);
     if (!response.ok) {
       throw new Error(`Erreur HTTP: ${response.status}`);
     }
