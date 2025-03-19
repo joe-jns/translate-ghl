@@ -1,6 +1,5 @@
 {
     "Welcome to ": "Bienvenue dans ",
-    "Course Progress":"Progression des cours",
     "View all Groups": "Voir tous les groupes",
     "You don't have any": "Vous n'en avez pas",
     "Invoices": "Factures",
@@ -89,5 +88,6 @@
     "Manage Your Account": "Gérer votre compte",
     "Log out": "Se déconnecter",
     "All": "Tout les",
-    "My": "Mes"
+    "My": "Mes",
+    "Course Progress":"Progression des cours"
   }
