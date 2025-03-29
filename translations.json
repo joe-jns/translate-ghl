@@ -343,16 +343,16 @@
     "Course": "Cours",
     "content": "contenu",
     "Lessons": "Leçons",
-    "Previous": "Précédent",
-    "Next": "Suivant",
+    "Previous": "Catégorie Précédente",
+    "Next": "Catégorie Suivante",
     "Lessons Completed": "Leçons terminées",
     "Lessons are Completed": "Les leçons sont terminées",
-    "Completed": "Terminé",
+    "Completed": "terminé",
     "Start Course": "Commencer le cours",
     "This lesson": "de cette leçon",
     "Mark as": "Marquer comme",
     "COMPLET": "terminé",
-    "Category": "",
+    "are": "sont",
     "Attached Files": "Fichiers joints"
 
   }
