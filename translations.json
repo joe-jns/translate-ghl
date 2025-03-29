@@ -337,6 +337,12 @@
     "Thu": "Jeudi",
     "Fri": "Vendredi",
     "Sat": "Samedi",
-    "Today": "Aujourd'hui"
+    "Today": "Aujourd'hui",
+    "Mark as complete": "Marquer comme terminé",
+    "Course content": "Contenu du cours",
+    "Lessons": "Leçons",
+    "Previous": "Précédent",
+    "Next": "Suivant",
+    "Lessons Completed": "Leçons terminées"
 
   }
