@@ -340,6 +340,8 @@
     "Today": "Aujourd'hui",
     "Mark as complete": "Marquer comme terminé",
     "Course content": "Contenu du cours",
+    "Course": "Cours",
+    "content": "contenu",
     "Lessons": "Leçons",
     "Previous": "Précédent",
     "Next": "Suivant",
@@ -348,6 +350,7 @@
     "Start Course": "Commencer le cours",
     "This lesson": "de cette leçon",
     "Mark as": "Marquer comme",
-    "COMPLET": "terminé"
+    "COMPLET": "terminé",
+    "Category": ""
 
   }
