@@ -360,7 +360,7 @@
     "Reset Password": "Réinitialiser le mot de passe",
     "Welcome to": "Bienvenue dans",
     "Hi": "Bonjour",
-    "Estimate": "Estimation",
+    "Estimates": "Estimations",
     "My courses": "Mes cours",
     "All Courses": "Tous les cours",
     "Title A-Z": "Titre A-Z",
@@ -374,6 +374,9 @@
     "Recently Enrolled": "Récemment inscrit",
     "Oldest Enrolled": "Le plus ancien inscrit",
     "Recently Accessed": "Récemment consulté",
-    "Oldest Accessed": "Le plus ancien consulté"
+    "Oldest Accessed": "Le plus ancien consulté",
+    "Search courses, categories and lessons": "Rechercher des cours, des catégories et des leçons",
+    "No notifications yet": "Aucune notification encore",
+    "When you get notifications, they’ll show up here": "Lorsque vous recevez des notifications, elles apparaîtront ici"
 
   }
