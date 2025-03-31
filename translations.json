@@ -357,7 +357,23 @@
     "Attached Files": "Fichiers joints",
     "New user": "Nouvel utilisateur?",
     "Sign up": "S'inscrire",
-    "Reset Password": "Réinitialiser le mot de passe"
-
+    "Reset Password": "Réinitialiser le mot de passe",
+    "Welcome to": "Bienvenue dans",
+    "Hi": "Bonjour",
+    "Estimate": "Estimation",
+    "My courses": "Mes cours",
+    "All Courses": "Tous les cours",
+    "Title A-Z": "Titre A-Z",
+    "Title Z-A": "Titre Z-A",
+    "Library Order (Low to High)": "Ordre de la bibliothèque (de bas en haut)",
+    "Library Order (High to Low)": "Ordre de la bibliothèque (de haut en bas)",
+    "Most Lessons": "Le plus de leçons",
+    "Least Lessons": "Le moins de leçons",
+    "Most Completed": "Le plus de terminés",
+    "Least Completed": "Le moins de terminés",
+    "Recently Enrolled": "Récemment inscrit",
+    "Oldest Enrolled": "Le plus ancien inscrit",
+    "Recently Accessed": "Récemment consulté",
+    "Oldest Accessed": "Le plus ancien consulté"
 
   }
