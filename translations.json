@@ -36,7 +36,7 @@
     "Profile Icon": "Icône de profil",
     "New User?": "Nouvel utilisateur?",
     "Login with secure code": "Connectez-vous avec un code sécurisé",
-    "Forgot Password ?": "Mot de passe oublié ?",
+    "Forgot Password": "Mot de passe oublié ?",
     "Or, sign in with your email": "Ou connectez-vous avec votre email",
     "Post Actions": "Actions de publication",
     "User Profile": "Profil d'utilisateur",
@@ -356,7 +356,7 @@
     "are": "sont",
     "Attached Files": "Fichiers joints",
     "Forgot": "Vous avez oublié votre",
-    "New user?": "Nouvel utilisateur?",
+    "New user": "Nouvel utilisateur?",
     "Already have an": "Vous avez déjà un "
 
   }
