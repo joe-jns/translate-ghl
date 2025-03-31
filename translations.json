@@ -188,7 +188,7 @@
     "Billing & Subscription": "Facturation et abonnement",
     "Certificates": "Certificats",
     "Social Media": "Réseaux sociaux",
-    "Account": "Compte",
+    "Account": "compte",
     "Update your account settings here": "Mettez à jour les paramètres de votre compte ici",
     "Account Settings": "Paramètres du compte",
     "No media files found": "Aucun fichier multimédia trouvé",
@@ -354,6 +354,9 @@
     "Mark as": "Marquer comme",
     "COMPLET": "terminé",
     "are": "sont",
-    "Attached Files": "Fichiers joints"
+    "Attached Files": "Fichiers joints",
+    "Forgot": "Vous avez oublié votre",
+    "New user?": "Nouvel utilisateur?",
+    "Already have an": "Vous avez déjà un "
 
   }
